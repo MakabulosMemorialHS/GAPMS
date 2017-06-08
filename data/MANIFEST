@@ -1,0 +1,13 @@
+MANIFEST
+----------------------------------------------------------
+
+R30200783004062015.06081016 --- This is the R3 File created by the SSS's own
+    R3 File Generation Program. I am putting this here as a reference data.
+
+    The filename seems to have the following format.
+      (a) R3 -- string identifying it as an R3 file.
+      (b) 0200783004 --- The Employer SSS Number
+      (c) 0620i5 --- The date in MMYYY Format. In this case June 2015.
+      (d) 06081016 -- Apparently the time stamp. In this case 08 June at 10:16 AM.
+
+
