@@ -93,6 +93,11 @@ public class gapmsfx extends Application {
         TextField sbrtf4 = new TextField();
         sssPane.add(sbrtf4, 1,5);
 
+        Button r3Button = new Button("Create R3");
+        Button tlButton = new Button("Create Transmittal");
+        sssPane.add(r3Button, 1,6);
+        sssPane.add(tlButton, 2,6);
+
 
         Tab hdmftab = new Tab("HDMF Reports");
         GridPane hdmfPane = new GridPane();
@@ -104,10 +109,12 @@ public class gapmsfx extends Application {
         hdmfPane.add(hdmftf1, 1,0);
 
 
+        Tab eetab = new Tab("Employee Table");
 
         tabpane.getTabs().add(ertab);
         tabpane.getTabs().add(ssstab);
         tabpane.getTabs().add(hdmftab);
+        tabpane.getTabs().add(eetab);
 	topPanel.getChildren().add(tabpane);
 
 
@@ -119,6 +126,20 @@ public class gapmsfx extends Application {
         Button quitButton = new Button("Quit");
         quitButton.setOnAction(e->Platform.exit());
         bottomPanel.getChildren().add(quitButton);
+
+
+
+        // Create the TableView widget which will be placed in the Center.
+        TableView empTable = new TableView();
+        ScrollPane empScroll = new ScrollPane(empTable);
+        empScroll.setFitToWidth(true);
+        bpane.setCenter(empScroll);
+
+        TableColumn lname = new TableColumn("Family Name");
+        TableColumn fname = new TableColumn("First Name");
+        TableColumn mname = new TableColumn("Middle Name");
+
+        empTable.getColumns().addAll(lname, fname, mname);
 
 
 	// Prepare and show the primaryStage
