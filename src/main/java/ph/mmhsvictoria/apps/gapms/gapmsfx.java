@@ -16,6 +16,9 @@ import javafx.scene.*;
 import javafx.scene.layout.*;
 import javafx.scene.control.*;
 import javafx.scene.text.*;
+import javafx.collections.*;
+import javafx.scene.control.cell.PropertyValueFactory;
+
 
 public class gapmsfx extends Application {
 
@@ -95,8 +98,8 @@ public class gapmsfx extends Application {
 
         Button r3Button = new Button("Create R3");
         Button tlButton = new Button("Create Transmittal");
-        sssPane.add(r3Button, 1,6);
-        sssPane.add(tlButton, 2,6);
+        sssPane.add(r3Button, 0,6);
+        sssPane.add(tlButton, 1,6);
 
 
         Tab hdmftab = new Tab("HDMF Reports");
@@ -129,19 +132,48 @@ public class gapmsfx extends Application {
 
 
 
-        // Create the TableView widget which will be placed in the Center.
-        TableView empTable = new TableView();
+        // Create the TableView widget and place in Center of the BorderPane.
+        TableView<EmployeeInfo> empTable = new TableView<EmployeeInfo>();
         ScrollPane empScroll = new ScrollPane(empTable);
         empScroll.setFitToWidth(true);
         bpane.setCenter(empScroll);
 
-        TableColumn lname = new TableColumn("Family Name");
-        TableColumn fname = new TableColumn("First Name");
-        TableColumn mname = new TableColumn("Middle Name");
 
-        empTable.getColumns().addAll(lname, fname, mname);
+        // Define the columns of the TableView
+        TableColumn lnameCol = new TableColumn("Family Name");
+        lnameCol.setMinWidth(200);
+        lnameCol.setCellValueFactory(
+            new PropertyValueFactory<EmployeeInfo,String>("lastName")
+        );
+        empTable.getColumns().add(lnameCol);
+
+        TableColumn fnameCol = new TableColumn("First Name");
+        fnameCol.setMinWidth(200);
+        fnameCol.setCellValueFactory(
+            new PropertyValueFactory<EmployeeInfo,String>("firstName")
+        );
+        empTable.getColumns().add(fnameCol);
 
 
+        TableColumn mnameCol = new TableColumn("Middle Name");
+        mnameCol.setMinWidth(200);
+        mnameCol.setCellValueFactory(
+            new PropertyValueFactory<EmployeeInfo,String>("middleName")
+        );
+        empTable.getColumns().add(mnameCol);
+
+
+
+        // Create the test data to be displayed.
+        final ObservableList<EmployeeInfo> data = FXCollections.observableArrayList(
+            new EmployeeInfo("Pascual", "Maureen", "Wroblewitz"),
+            new EmployeeInfo("Wurtzbach", "Pia", "Alonzo"),
+            new EmployeeInfo("Domingo", "Kim", "Valdez")
+            );
+
+
+        empTable.setItems(data);
+ 
 	// Prepare and show the primaryStage
 
 	primaryStage.setScene(scene);
