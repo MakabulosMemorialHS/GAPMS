@@ -9,7 +9,7 @@
 
 ////////////////////////////////////////////////////////////////////////////
 //
-// A. The format of the input fields for this version of Create_CRF()
+// A. 
 //    should be the following:
 //     0. ID Number
 //     1. Last Name
@@ -31,58 +31,70 @@
 
 package ph.mmhsvictoria.apps.gapms;
 
+import java.lang.*;
+import java.util.*;
+
+import javafx.beans.property.*;
 
 public class EmployeeInfo {
-    private String idNum;
-    private String lastName;
-    private String firstName;
-    private String middleName;
-    private String sssNumber;
-    private String philHealthNumber;
-    private String hdmfNumber;
-    private double salary;
-    private double sssEeAmount;
-    private double sssErAmount;
-    private double ecContribution;
-    private double philHealthEeAmount;
-    private double philHealthErAmount;
-    private double hdmfEeAmount;
-    private double hdmfErAmount;
+    // private String Property idNum; 
+    private final StringProperty lastName; 
+    private StringProperty firstName;                 
+    private StringProperty middleName;               
+    // private String Property  sssNumber;                
+    // private String philHealthNumber;         
+    // private String hdmfNumber;               
+    // private double salary;              
+    // private double sssEeAmount;
+    // private double sssErAmount;
+    // private double ecContribution;
+    // private double philHealthEeAmount;
+    // private double philHealthErAmount;
+    // private double hdmfEeAmount;
+    // private double hdmfErAmount;
 
     public EmployeeInfo() {
-	this.idNum = "";
-	this.lastName = "";         
-	this.firstName = "";
-	this.middleName = "";
-	this.sssNumber = "";    
-	this.philHealthNumber = "";
-	this.hdmfNumber = "";
-	this.salary = 0.00;
-	this.sssEeAmount = 0.00;
-	this.sssErAmount = 0.00;
-	this.ecContribution = 10.00;
-	this.philHealthEeAmount = 0.00;
-	this.philHealthErAmount = 0.00;
-	this.hdmfEeAmount = 100.00;
-	this.hdmfErAmount = 100.00;
+        lastName = new SimpleStringProperty(this, "lastName", "");
+        firstName = new SimpleStringProperty(this, "firstName", "");
+        middleName = new SimpleStringProperty(this, "middleName", "");
+
+        // this.idNum = "";
+        // this.lastName = "";         
+        // this.firstName = "";
+        // this.middleName = "";
+        // this.sssNumber = "";    
+        // this.philHealthNumber = "";
+        // this.hdmfNumber = "";
+        // this.salary = 0.00;
+        // this.sssEeAmount = 0.00;
+        // this.sssErAmount = 0.00;
+        // this.ecContribution = 10.00;
+        // this.philHealthEeAmount = 0.00;
+        // this.philHealthErAmount = 0.00;
+        // this.hdmfEeAmount = 100.00;
+        // this.hdmfErAmount = 100.00;
    }
 
-    public EmployeeInfo(String lastName, String firstName, String middleName) {
-	this.idNum = "";
-	this.lastName = lastName;         
-	this.firstName = firstName;
-	this.middleName = middleName;
-	this.sssNumber = "";    
-	this.philHealthNumber = "";
-	this.hdmfNumber = "";
-	this.salary = 0.00;
-	this.sssEeAmount = 0.00;
-	this.sssErAmount = 0.00;
-	this.ecContribution = 10.00;
-	this.philHealthEeAmount = 0.00;
-	this.philHealthErAmount = 0.00;
-	this.hdmfEeAmount = 100.00;
-	this.hdmfErAmount = 100.00;
+    public EmployeeInfo(String lN, String fN, String mN) {
+        lastName = new SimpleStringProperty(this, "lastName", lN);
+        firstName = new SimpleStringProperty(this, "firstName", fN);
+        middleName = new SimpleStringProperty(this, "middleName", mN);
+
+        // this.idNum = "";
+        // this.lastName = lastName;         
+        // this.firstName = firstName;
+        // this.middleName = middleName;
+        // this.sssNumber = "";    
+        // this.philHealthNumber = "";
+        // this.hdmfNumber = "";
+        // this.salary = 0.00;
+        // this.sssEeAmount = 0.00;
+        // this.sssErAmount = 0.00;
+        // this.ecContribution = 10.00;
+        // this.philHealthEeAmount = 0.00;
+        // this.philHealthErAmount = 0.00;
+        // this.hdmfEeAmount = 100.00;
+        // this.hdmfErAmount = 100.00;
    }
 
    /* *******************************************************************
@@ -90,79 +102,79 @@ public class EmployeeInfo {
     * *******************************************************************/
 
 
-    public String getIdNum() {
-	return idNum;
+//    public String getIdNum() {
+//        return idNum;
+//    }
+
+
+    public final String getLastName() {
+        return lastName.get();
     }
 
 
-    public String getLastName() {
-	return lastName;
-    }
-
-
-    public String getFirstName() {
-	return firstName;
+    public final String getFirstName() {
+        return firstName.get();
     }
 
 
     public String getMiddleName() {
-	return middleName;
+        return middleName.get();
     }
 
 
-    public String getSssNumber() {
-	return sssNumber;
-    }
-
-
-    public String getPhilHealthNumber() {
-	return philHealthNumber;
-    }
-
-
-    public String getHdmfNumber() {
-	return hdmfNumber;
-    }
-
-
-    public double getSalary() {
-	return salary;
-    }
-
-
-    public double getSssEeAmount() {
-	return sssEeAmount;
-    }
-
-
-    public double getSssErAmount() {
-	return sssErAmount;
-    }
-
-
-    public double getEcContribution() {
-	return ecContribution;
-    }
-
-
-    public double getPhilHealthEeAmount() {
-	return philHealthEeAmount;
-    }
-
-
-    public double getPhilHealthErAmount() {
-	return philHealthErAmount;
-    }
-
-
-    public double getHdmfEeAmount() {
-	return hdmfEeAmount;
-    }
-
-
-    public double getHdmfErAmount() {
-	return hdmfErAmount;
-    }
+//    public String getSssNumber() {
+//        return sssNumber;
+//    }
+//
+//
+//    public String getPhilHealthNumber() {
+//        return philHealthNumber;
+//    }
+//
+//
+//    public String getHdmfNumber() {
+//        return hdmfNumber;
+//    }
+//
+//
+//    public double getSalary() {
+//        return salary;
+//    }
+//
+//
+//    public double getSssEeAmount() {
+//        return sssEeAmount;
+//    }
+//
+//
+//    public double getSssErAmount() {
+//        return sssErAmount;
+//    }
+//
+//
+//    public double getEcContribution() {
+//        return ecContribution;
+//    }
+//
+//
+//    public double getPhilHealthEeAmount() {
+//        return philHealthEeAmount;
+//    }
+//
+//
+//    public double getPhilHealthErAmount() {
+//        return philHealthErAmount;
+//    }
+//
+//
+//    public double getHdmfEeAmount() {
+//        return hdmfEeAmount;
+//    }
+//
+//
+//    public double getHdmfErAmount() {
+//        return hdmfErAmount;
+//    }
 
 
 
@@ -172,78 +184,93 @@ public class EmployeeInfo {
     * *******************************************************************/
 
 
-    public void  setIdNum(String aparam) {
-	this.idNum = aparam;
+//    public void  setIdNum(String aparam) {
+//        this.idNum = aparam;
+//    }
+
+
+    public final void setLastName(String aparam) {
+        lastName.set(aparam);
     }
 
 
-    public void  setLastName(String aparam) {
-	this.lastName = aparam;         
+    public final void setFirstName(String aparam) {
+        firstName.set(aparam);
     }
 
 
-    public void  setFirstName(String aparam) {
-	this.firstName = aparam;
+    public final void setMiddleName(String aparam) {
+        middleName.set(aparam);
     }
 
 
-    public void  setMiddleName(String aparam) {
-	this.middleName = aparam;
+//    public void  setSssNumber(String aparam) {
+//        this.sssNumber = aparam;    
+//    }
+//
+//
+//    public void  setPhilHealthNumber(String aparam) {
+//        this.philHealthNumber = aparam;
+//    }
+//
+//
+//    public void  setHdmfNumber(String aparam) {
+//        this.hdmfNumber = aparam;
+//    }
+//
+//
+//    public void  setSalary(double aparam) {
+//        this.salary = aparam;
+//    }
+//
+//
+//    public void  setSssEeAmount(double aparam) {
+//        this.sssEeAmount = aparam;
+//    }
+//
+//
+//    public void  setSssErAmount(double aparam) {
+//        this.sssErAmount = aparam;
+//    }
+//
+//
+//    public void  setEcContribution(double aparam) {
+//        this.ecContribution = aparam;
+//    }
+//
+//
+//    public void  setPhilHealthEeAmount(double aparam) {
+//        this.philHealthEeAmount = aparam;
+//    }
+//
+//
+//    public void  setPhilHealthErAmount(double aparam) {
+//        this.philHealthErAmount = aparam;
+//    }
+//
+//
+//    public void  setHdmfEeAmount(double aparam) {
+//        this.hdmfEeAmount = aparam;
+//    }
+//
+//
+//    public void  setHdmfErAmount(double aparam) {
+//        this.hdmfErAmount = aparam;
+//    }
+
+
+    // These are the property accessors.
+
+    public final StringProperty lastNameProperty() {
+        return lastName;
     }
 
-
-    public void  setSssNumber(String aparam) {
-	this.sssNumber = aparam;    
+    public final StringProperty firstNameProperty() {
+        return firstName;
     }
 
-
-    public void  setPhilHealthNumber(String aparam) {
-	this.philHealthNumber = aparam;
-    }
-
-
-    public void  setHdmfNumber(String aparam) {
-	this.hdmfNumber = aparam;
-    }
-
-
-    public void  setSalary(double aparam) {
-	this.salary = aparam;
-    }
-
-
-    public void  setSssEeAmount(double aparam) {
-	this.sssEeAmount = aparam;
-    }
-
-
-    public void  setSssErAmount(double aparam) {
-	this.sssErAmount = aparam;
-    }
-
-
-    public void  setEcContribution(double aparam) {
-	this.ecContribution = aparam;
-    }
-
-
-    public void  setPhilHealthEeAmount(double aparam) {
-	this.philHealthEeAmount = aparam;
-    }
-
-
-    public void  setPhilHealthErAmount(double aparam) {
-	this.philHealthErAmount = aparam;
-    }
-
-
-    public void  setHdmfEeAmount(double aparam) {
-	this.hdmfEeAmount = aparam;
-    }
-
-
-    public void  setHdmfErAmount(double aparam) {
-	this.hdmfErAmount = aparam;
+    public final StringProperty middleNameProperty() {
+        return middleName;
     }
 }
 
