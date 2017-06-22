@@ -48,60 +48,35 @@ public class gapmsfx extends Application {
 
         TabPane tabpane = new TabPane();
 
+        // Create the Employer Tab
         Tab ertab = new Tab("Employer Info");
-        GridPane employerPane = new GridPane();
-        ertab.setContent(employerPane);
+        tabpane.getTabs().add(ertab);
+        EmployerTab.initializeTab(ertab);
 
-        Text ert1 = new Text("Employer Name");
-        employerPane.add(ert1, 0,0);
-        TextField ertf1 = new TextField();
-        employerPane.add(ertf1, 1,0);
 
+        // Create the Employee Tab
+        Tab eetab = new Tab("Employee Table");
+        tabpane.getTabs().add(eetab);
+
+        // Create a TableView widget and place in Center of the BorderPane.
+        TableView<EmployeeInfo> empTable = new TableView<EmployeeInfo>();
+        ScrollPane empScroll = new ScrollPane(empTable);
+        empScroll.setFitToWidth(true);
+        bpane.setCenter(empScroll);
+
+        EmployeeTable.initializeTab(eetab);
+        EmployeeTable.initializeEmployeeTable(empTable);
+        EmployeeTable.populateEmployeeTable(empTable);
  
-        Text ert2 = new Text("Employer Address");
-        employerPane.add(ert2, 0,1);
-        TextField ertf2 = new TextField();
-        employerPane.add(ertf2, 1,1);
 
 
+        // Create and Populate the SSS Reports Tab
         Tab ssstab = new Tab("SSS Reports");
-        GridPane sssPane = new GridPane();
-        ssstab.setContent(sssPane);
-
-        Text ssst1 = new Text("Employer SSS Number");
-        sssPane.add(ssst1, 0,0);
-        TextField ssstf1 = new TextField();
-        sssPane.add(ssstf1, 1,0);
-
-        Text spcr1 = new Text();   // Just a spacer.
-        sssPane.add(spcr1, 0,1);
-
-        Text sbrt1 = new Text("SBR Number");
-        sssPane.add(sbrt1, 0,2);
-        TextField sbrtf1 = new TextField();
-        sssPane.add(sbrtf1, 1,2);
-
-        Text sbrt2 = new Text("SBR Amount");
-        sssPane.add(sbrt2, 0,3);
-        TextField sbrtf2 = new TextField();
-        sssPane.add(sbrtf2, 1,3);
-
-        Text sbrt3 = new Text("SBR Date");
-        sssPane.add(sbrt3, 0,4);
-        TextField sbrtf3 = new TextField();
-        sssPane.add(sbrtf3, 1,4);
-
-        Text sbrt4 = new Text("Applicable Month");
-        sssPane.add(sbrt4, 0,5);
-        TextField sbrtf4 = new TextField();
-        sssPane.add(sbrtf4, 1,5);
-
-        Button r3Button = new Button("Create R3");
-        Button tlButton = new Button("Create Transmittal");
-        sssPane.add(r3Button, 0,6);
-        sssPane.add(tlButton, 1,6);
+        SSSReports.initializeSSSTab(ssstab);
+        tabpane.getTabs().add(ssstab);
 
 
+        // Create and populate the HDMF Tab
         Tab hdmftab = new Tab("HDMF Reports");
         GridPane hdmfPane = new GridPane();
         hdmftab.setContent(hdmfPane);
@@ -112,12 +87,9 @@ public class gapmsfx extends Application {
         hdmfPane.add(hdmftf1, 1,0);
 
 
-        Tab eetab = new Tab("Employee Table");
 
-        tabpane.getTabs().add(ertab);
-        tabpane.getTabs().add(ssstab);
         tabpane.getTabs().add(hdmftab);
-        tabpane.getTabs().add(eetab);
+
 	topPanel.getChildren().add(tabpane);
 
 
@@ -132,48 +104,7 @@ public class gapmsfx extends Application {
 
 
 
-        // Create the TableView widget and place in Center of the BorderPane.
-        TableView<EmployeeInfo> empTable = new TableView<EmployeeInfo>();
-        ScrollPane empScroll = new ScrollPane(empTable);
-        empScroll.setFitToWidth(true);
-        bpane.setCenter(empScroll);
 
-
-        // Define the columns of the TableView
-        TableColumn lnameCol = new TableColumn("Family Name");
-        lnameCol.setMinWidth(200);
-        lnameCol.setCellValueFactory(
-            new PropertyValueFactory<EmployeeInfo,String>("lastName")
-        );
-        empTable.getColumns().add(lnameCol);
-
-        TableColumn fnameCol = new TableColumn("First Name");
-        fnameCol.setMinWidth(200);
-        fnameCol.setCellValueFactory(
-            new PropertyValueFactory<EmployeeInfo,String>("firstName")
-        );
-        empTable.getColumns().add(fnameCol);
-
-
-        TableColumn mnameCol = new TableColumn("Middle Name");
-        mnameCol.setMinWidth(200);
-        mnameCol.setCellValueFactory(
-            new PropertyValueFactory<EmployeeInfo,String>("middleName")
-        );
-        empTable.getColumns().add(mnameCol);
-
-
-
-        // Create the test data to be displayed.
-        final ObservableList<EmployeeInfo> data = FXCollections.observableArrayList(
-            new EmployeeInfo("Pascual", "Maureen", "Wroblewitz"),
-            new EmployeeInfo("Wurtzbach", "Pia", "Alonzo"),
-            new EmployeeInfo("Domingo", "Kim", "Valdez")
-            );
-
-
-        empTable.setItems(data);
- 
 	// Prepare and show the primaryStage
 
 	primaryStage.setScene(scene);
